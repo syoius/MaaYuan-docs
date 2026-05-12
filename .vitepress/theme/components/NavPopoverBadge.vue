@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted, ref } from 'vue'
+import { useRouter } from 'vitepress'
 
 const props = withDefaults(defineProps<{
   badgeText: string
@@ -8,12 +9,16 @@ const props = withDefaults(defineProps<{
   highlights?: string[]
   ariaLabel?: string
   screenMenu?: boolean
+  link?: string
 }>(), {
   ariaLabel: '查看项目说明',
   description: '',
   highlights: () => [],
   screenMenu: false,
+  link: '',
 })
+
+const router = useRouter()
 
 const rootRef = ref<HTMLElement | null>(null)
 const isOpen = ref(false)
@@ -72,6 +77,11 @@ function handleFocusOut(event: FocusEvent) {
 function handleTriggerClick() {
   if (props.screenMenu || !isDesktopViewport()) {
     togglePopover()
+    return
+  }
+
+  if (props.link) {
+    router.go(props.link)
     return
   }
 
