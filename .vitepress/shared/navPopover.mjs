@@ -6,6 +6,5 @@ export const navPopoverData = {
   "highlights": [
     "修复个别情况下无法识别到正在营业中界面的问题"
   ],
-  "ariaLabel": "查看当前项目版本与更新说明",
-  "link": "/FAQ/02-installation-issues#更新相关"
+  "ariaLabel": "查看当前项目版本与更新说明"
 }
