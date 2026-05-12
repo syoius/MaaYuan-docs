@@ -12,6 +12,7 @@ import { ref, computed } from "vue";
 const featuredLinks = getFeaturedLinks()
 const moreLinks = getMoreLinks()
 const showMore = ref(false)
+const moreCount = computed(() => moreLinks.length)
 
 const allLinks = computed(() => {
   return [...featuredLinks, ...moreLinks]
@@ -101,8 +102,13 @@ defineOptions({ name: "HomeCommunityLinks" });
           class="home-community-links__more-button"
           @click="toggleMore"
         >
-          <span>更多</span>
-          <span class="home-community-links__more-arrow">▼</span>
+          <span class="home-community-links__more-line">
+            <span>点击获取更多工具</span>
+            <span class="home-community-links__more-arrow">▼</span>
+          </span>
+          <span class="home-community-links__more-line">
+            已收录 <span class="home-community-links__more-count">{{ moreCount }}</span>
+          </span>
         </button>
         <button
           v-else
@@ -230,9 +236,10 @@ defineOptions({ name: "HomeCommunityLinks" });
 
 .home-community-links__more-button {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 6px;
   width: 100%;
   height: 100%;
   min-height: 72px;
@@ -256,11 +263,39 @@ defineOptions({ name: "HomeCommunityLinks" });
   background: color-mix(in srgb, var(--vp-c-brand-1) 8%, transparent);
 }
 
+.home-community-links__more-line {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.home-community-links__more-line:last-child {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--vp-c-text-3);
+}
+
+.home-community-links__more-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 24px;
+  padding: 0 8px;
+  border-radius: 999px;
+  background: var(--vp-c-brand-1);
+  color: var(--vp-c-bg);
+  font-size: 0.8rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
 .home-community-links__more-arrow {
   font-size: 0.75rem;
 }
 
 .home-community-links__more-button--collapse {
+  flex-direction: row;
   width: 100%;
   height: 100%;
   min-height: 72px;
