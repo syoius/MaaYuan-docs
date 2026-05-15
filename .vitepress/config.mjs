@@ -34,7 +34,7 @@ export default defineConfig({
         nav: [
           {
             component: "NavPopoverBadge",
-            props: navPopoverData,
+            props: { ...navPopoverData, link: "/Started/Install" },
           },
           {
             text: "📢 公告",
