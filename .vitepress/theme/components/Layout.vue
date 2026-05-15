@@ -1,6 +1,6 @@
 <script setup>
+import { computed, provide, useSlots } from 'vue'
 import { useRoute } from 'vitepress'
-import { computed, provide, useSlots, watch } from 'vue'
 import VPBackdrop from 'vitepress/dist/client/theme-default/components/VPBackdrop.vue'
 import VPContent from 'vitepress/dist/client/theme-default/components/VPContent.vue'
 import VPFooter from 'vitepress/dist/client/theme-default/components/VPFooter.vue'
@@ -9,53 +9,36 @@ import VPNav from 'vitepress/dist/client/theme-default/components/VPNav.vue'
 import VPSidebar from 'vitepress/dist/client/theme-default/components/VPSidebar.vue'
 import VPSkipLink from 'vitepress/dist/client/theme-default/components/VPSkipLink.vue'
 import { useData } from 'vitepress/dist/client/theme-default/composables/data'
-import { useCloseSidebarOnEscape, useSidebar } from 'vitepress/dist/client/theme-default/composables/sidebar'
+import { layoutInfoInjectionKey, registerWatchers } from 'vitepress/dist/client/theme-default/composables/layout'
+import { useSidebarControl } from 'vitepress/dist/client/theme-default/composables/sidebar'
 import SectionTabs from './SectionTabs.vue'
 
 const {
   isOpen: isSidebarOpen,
   open: openSidebar,
   close: closeSidebar
-} = useSidebar()
+} = useSidebarControl()
 
-const route = useRoute()
-watch(() => route.path, closeSidebar)
-
-useCloseSidebarOnEscape(isSidebarOpen, closeSidebar)
+registerWatchers({ closeSidebar })
 
 const { frontmatter } = useData()
-
-const sidebarScopeClass = computed(() => {
-  const path = route.path
-  const normalizedPath = path
-    .replace(/\.html$/, '')
-    .replace(/\/$/, '') || '/'
-
-  if (path.startsWith('/Started/'))
-    return 'sidebar-scope-started'
-
-  if (path.startsWith('/Manual/'))
-    return 'sidebar-scope-manual'
-
-  if (path.startsWith('/Features/'))
-    return 'sidebar-scope-features'
-
-  if (path.startsWith('/Activity/'))
-    return 'sidebar-scope-activity'
-
-  if (path.startsWith('/FAQ/') || normalizedPath === '/FAQ')
-    return 'sidebar-scope-faq'
-
-  if (normalizedPath === '/Developer')
-    return 'sidebar-scope-developer'
-
-  return ''
-})
 
 const slots = useSlots()
 const heroImageSlotExists = computed(() => !!slots['home-hero-image'])
 
-provide('hero-image-slot-exists', heroImageSlotExists)
+provide(layoutInfoInjectionKey, { heroImageSlotExists })
+
+const route = useRoute()
+const sidebarScopeClass = computed(() => {
+  const path = route.path
+  if (path.startsWith('/Started/')) return 'sidebar-scope-started'
+  if (path.startsWith('/Manual/')) return 'sidebar-scope-manual'
+  if (path.startsWith('/Features/')) return 'sidebar-scope-features'
+  if (path.startsWith('/Activity/')) return 'sidebar-scope-activity'
+  if (path.startsWith('/FAQ/')) return 'sidebar-scope-faq'
+  if (path === '/Developer' || path === '/Developer/') return 'sidebar-scope-developer'
+  return ''
+})
 </script>
 
 <template>
@@ -85,9 +68,8 @@ provide('hero-image-slot-exists', heroImageSlotExists)
       <template #sidebar-nav-after><slot name="sidebar-nav-after" /></template>
     </VPSidebar>
 
-    <transition name="page" mode="out-in">
-      <VPContent :key="route.path">
-        <template #page-top><slot name="page-top" /></template>
+    <VPContent>
+      <template #page-top><slot name="page-top" /></template>
       <template #page-bottom><slot name="page-bottom" /></template>
 
       <template #not-found><slot name="not-found" /></template>
@@ -114,7 +96,6 @@ provide('hero-image-slot-exists', heroImageSlotExists)
       <template #aside-ads-before><slot name="aside-ads-before" /></template>
       <template #aside-ads-after><slot name="aside-ads-after" /></template>
     </VPContent>
-    </transition>
 
     <VPFooter />
     <slot name="layout-bottom" />

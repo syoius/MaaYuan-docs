@@ -22,7 +22,7 @@
 - Linux、Android、iOS 以及其他未知平台当前均不支持。
 :::
 
-## 下载渠道说明
+## 下载渠道说明 {#download-channels}
 
 - 【最省事】[Mirror酱](https://mirrorchyan.com/zh/projects?rid=MaaYuan&source=navtop)下载，详细介绍请查阅【常见问题-Mirror酱是什么】。
 - 【第一手】[GitHub](https://github.com/syoius/MaaYuan)下载，需要科学上网，如果喜欢`MaaYuan`，请在项目右上角点亮`Star`支持。

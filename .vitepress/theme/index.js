@@ -6,6 +6,7 @@ import './styles/custom-block.css'
 import './styles/font.css'
 import AnnouncementNavAction from './components/AnnouncementNavAction.vue'
 import AnnouncementNavModal from './components/AnnouncementNavModal.vue'
+import QuickStartModal from './components/QuickStartModal.vue'
 import Layout from './components/Layout.vue'
 import ArticleShare from './components/ArticleShare.vue'
 import HomeCommunityLinks from './components/HomeCommunityLinks.vue'
@@ -31,7 +32,7 @@ export default {
       // https://vitepress.dev/guide/extending-default-theme#layout-slots
       'home-hero-image': () => h(HomeHeroRandomImage),
       'aside-outline-after': () => h(ArticleShare),
-      'layout-bottom': () => h(AnnouncementNavModal),
+      'layout-bottom': () => [h(AnnouncementNavModal), h(QuickStartModal)],
       'not-found': () => h(NotFound)
     })
   }

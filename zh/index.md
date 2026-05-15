@@ -11,7 +11,7 @@ hero:
   actions:
     - theme: brand
       text: 快速开始
-      link: /Started/Install
+      link: '#quick-start-popup'
     - theme: alt
       text: 开发手册
       link: /Developer/0.0-MaaYuan零基础开发指南
