@@ -51,14 +51,14 @@ onMounted(() => {
         <p class="qs-subtitle">欢迎使用MaaYuan，请选择您的需求</p>
         <div class="qs-actions">
           <button class="qs-btn qs-btn-primary" @click="dismiss(); goInstallDirect()">
-            <span class="qs-btn-icon qs-btn-emoji">🖥️</span>
+            <img class="qs-btn-emoji" src="https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f5a5.svg" alt="电脑">
             <span class="qs-btn-text">
               <span class="qs-btn-title">我不是新用户</span>
               <span class="qs-btn-desc">跳转下载渠道</span>
             </span>
           </button>
           <button class="qs-btn qs-btn-outline" @click="dismiss(); goInstall()">
-            <span class="qs-btn-icon qs-btn-emoji">🆕</span>
+            <img class="qs-btn-emoji" src="https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f195.svg" alt="新">
             <span class="qs-btn-text">
               <span class="qs-btn-title">我是新用户</span>
               <span class="qs-btn-desc">跳转新手教程</span>
@@ -151,8 +151,9 @@ onMounted(() => {
 }
 
 .qs-btn-emoji {
-  font-size: 28px;
-  line-height: 1;
+  width: 36px;
+  height: 36px;
+  display: block;
 }
 
 .qs-btn-icon {
