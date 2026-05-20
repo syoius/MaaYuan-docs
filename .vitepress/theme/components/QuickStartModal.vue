@@ -48,24 +48,20 @@ onMounted(() => {
     <section class="quick-start-modal__container">
       <div class="qs-body">
         <div class="qs-tag">快速开始</div>
-        <p class="qs-subtitle">欢迎使用 MaaYuan，请选择你的使用方式</p>
+        <p class="qs-subtitle">欢迎使用MaaYuan，请选择您的需求</p>
         <div class="qs-actions">
           <button class="qs-btn qs-btn-primary" @click="dismiss(); goInstallDirect()">
-            <span class="qs-btn-icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
-            </span>
+            <span class="qs-btn-icon qs-btn-emoji">🖥️</span>
             <span class="qs-btn-text">
-              <span class="qs-btn-title">我不是新手</span>
-              <span class="qs-btn-desc">直接跳转到下载渠道说明</span>
+              <span class="qs-btn-title">我不是新用户</span>
+              <span class="qs-btn-desc">跳转下载渠道</span>
             </span>
           </button>
           <button class="qs-btn qs-btn-outline" @click="dismiss(); goInstall()">
-            <span class="qs-btn-icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-            </span>
+            <span class="qs-btn-icon qs-btn-emoji">🆕</span>
             <span class="qs-btn-text">
-              <span class="qs-btn-title">我是新手</span>
-              <span class="qs-btn-desc">直接跳转到下载与安装</span>
+              <span class="qs-btn-title">我是新用户</span>
+              <span class="qs-btn-desc">跳转新手教程</span>
             </span>
           </button>
         </div>
@@ -152,6 +148,11 @@ onMounted(() => {
   border-color: var(--vp-c-brand-1);
   background: var(--vp-c-brand-soft);
   transform: translateY(-1px);
+}
+
+.qs-btn-emoji {
+  font-size: 28px;
+  line-height: 1;
 }
 
 .qs-btn-icon {
