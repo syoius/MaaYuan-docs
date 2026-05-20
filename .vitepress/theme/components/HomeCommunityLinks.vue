@@ -63,6 +63,7 @@ defineOptions({ name: "HomeCommunityLinks" });
           :href="link.href"
           :target="getExternalTarget(link.external)"
           :rel="getExternalRel(link.external)"
+          :title="link.text"
         >
           <span class="home-community-links__icon" aria-hidden="true">{{
             link.icon
@@ -205,6 +206,9 @@ defineOptions({ name: "HomeCommunityLinks" });
   font-weight: 600;
   line-height: 1.3;
   color: var(--vp-c-text-1);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .home-community-links__author-badge {
