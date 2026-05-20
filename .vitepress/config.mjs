@@ -66,6 +66,7 @@ export default defineConfig({
             text: '🔗 友情链接',
             items: [
               { text: 'Maa', link: 'https://maa.plus/' },
+              { text: 'biubiu', link: 'https://www.biubiu001.com/?cfrom=maayuan' },
               { text: 'Mirror酱', link: 'https://mirrorchyan.com/zh/projects?rid=MaaYuan&source=navtop' },
               { text: 'MaaLYSK', link: 'https://maalysk.top/zh_cn/' },
               { text: '代号鸢BWiki', link: 'https://wiki.biligame.com/yuan/%E9%A6%96%E9%A1%B5' },
