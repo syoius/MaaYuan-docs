@@ -46,6 +46,7 @@ jobs:
           rsync -av --delete .vitepress/dist/ MaaYuan/homepage/
 
       - name: Create PR in MaaYuan Main Repository
+        id: create-pr
         uses: peter-evans/create-pull-request@v8
         with:
           token: ${{ secrets.MAAYUAN_PAT }}
@@ -60,3 +61,10 @@ jobs:
             Source repo: ${{ github.repository }}
             Source commit: ${{ github.sha }}
           delete-branch: true
+
+      - name: Enable auto-merge for generated PR
+        if: steps.create-pr.outputs.pull-request-number != ''
+        env:
+          GH_TOKEN: ${{ secrets.MAAYUAN_PAT }}
+          PR_NUMBER: ${{ steps.create-pr.outputs.pull-request-number }}
+        run: gh pr merge "$PR_NUMBER" --repo syoius/MaaYuan --auto --squash --delete-branch
