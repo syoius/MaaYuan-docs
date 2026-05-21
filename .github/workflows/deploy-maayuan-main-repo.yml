@@ -13,17 +13,24 @@ jobs:
       - name: Checkout MaaYuan Docs Repository
         uses: actions/checkout@v5
 
-      - name: Setup Node
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+          run_install: false
+
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
-          cache: npm
+          node-version: 20
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
 
       - name: Install dependencies
-        run: npm ci
+        run: pnpm install --frozen-lockfile
 
       - name: Build VitePress
-        run: npm run docs:build
+        run: pnpm run docs:build
 
       - name: Checkout MaaYuan Main Repository
         uses: actions/checkout@v5
