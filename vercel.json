@@ -5,6 +5,78 @@
   "outputDirectory": ".vitepress/dist",
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "doc.maayuan.top"
+        }
+      ],
+      "destination": "https://maayuan.top",
+      "permanent": true
+    },
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "drop.maayuan.top"
+        }
+      ],
+      "destination": "https://td3nqr3477.feishu.cn/share/base/form/shrcnJX0flRpMVVLdsBIb1L0MRh",
+      "permanent": true
+    },
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "start.maayuan.top"
+        }
+      ],
+      "destination": "https://docs.qq.com/aio/DS1BMQmpiQkdOb1RT?p=IkfuB8bNvCA4gOkSBCSTeA",
+      "permanent": true
+    },
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "help.maayuan.top"
+        }
+      ],
+      "destination": "https://td3nqr3477.feishu.cn/share/base/form/shrcn1zPtP9CZZT35erTCarjEOg",
+      "permanent": true
+    },
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "faq.maayuan.top"
+        }
+      ],
+      "destination": "https://docs.qq.com/aio/DS1BMQmpiQkdOb1RT?p=lhxkpB2LdGdOmS3gQyArmB",
+      "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/operators.json",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=43200, s-maxage=86400, stale-while-revalidate=43200"
+        },
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        }
+      ]
+    }
+  ],
   "routes": [
     { "handle": "filesystem" },
     { "src": "/.*", "dest": "/404.html", "status": 404 }

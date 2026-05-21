@@ -1,0 +1,55 @@
+name: Build VitePress and open PR to MaaYuan Main Repo
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-pr:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout MaaYuan Docs Repository
+        uses: actions/checkout@v5
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build VitePress
+        run: npm run docs:build
+
+      - name: Checkout MaaYuan Main Repository
+        uses: actions/checkout@v5
+        with:
+          repository: syoius/MaaYuan
+          ref: v5
+          token: ${{ secrets.MAAYUAN_PAT }}
+          path: MaaYuan
+
+      - name: Sync dist contents to Maayuan/homepage
+        run: |
+          mkdir -p MaaYuan/homepage
+          rsync -av --delete .vitepress/dist/ MaaYuan/homepage/
+
+      - name: Create PR in MaaYuan Main Repository
+        uses: peter-evans/create-pull-request@v8
+        with:
+          token: ${{ secrets.MAAYUAN_PAT }}
+          path: MaaYuan
+          branch: auto/update-homepage-from-vitepress
+          base: v5
+          commit-message: "Update homepage from VitePress build"
+          title: "Update homepage from VitePress build"
+          body: |
+            Automated update of `homepage/` from MaaYuan Docs VitePress build.
+
+            Source repo: ${{ github.repository }}
+            Source commit: ${{ github.sha }}
+          delete-branch: true
