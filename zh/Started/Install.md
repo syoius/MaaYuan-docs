@@ -52,8 +52,8 @@
 | 若依赖库安装失败 | 下载**VCRedist**：点击 [**vc_redist.x64**](https://aka.ms/vs/17/release/vc_redist.x64.exe) 下载并安装完成；下载**NET10**：点击[**.NET 官方下载页面**](https://dotnet.microsoft.com/zh-cn/download/dotnet/10.0)选择 .NET **桌面运行时**-Windows **x64**进行下载并安装完成。 | 无需下载**VCRedist**；下载**NET10**：点击[**.NET 官方下载页面**](https://dotnet.microsoft.com/zh-cn/download/dotnet/10.0)选择 .NET**运行时**-macOS **Arm64**进行下载并安装完成。 |
 
 ::: details 版本变化提醒
-如需使用 `正式版V1.0.2` 及往期版本，请安装 `.NET 8` 运行库。
-从 `v2.0.0` 起，需要安装 `.NET 10` 及以上运行库，原来的 `.NET 8` 已不再满足要求。
+如需使用 `正式版V1.0.2 `及往期版本，请安装 `.NET 8 `版本运行库。
+如需使用 `公测版v2.0.0 `及以上版本，请安装 `.NET 10 `及以上版本运行库。
 :::
 
 ## 下一步
