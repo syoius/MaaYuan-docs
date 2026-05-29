@@ -24,7 +24,7 @@
 
 ## 下载渠道说明 {#download-channels}
 
-- 【最省事】[Mirror酱](https://mirrorchyan.com/zh/projects?rid=MaaYuan&source=navtop)下载，详细介绍请查阅【常见问题-Mirror酱是什么】。
+- 【最省事】[Mirror酱](https://mirrorchyan.com/zh/projects?rid=MaaYuan&source=navtop)下载，详细介绍请查阅[【常见问题-Mirror酱是什么】](XXX)。
 - 【第一手】[GitHub](https://github.com/syoius/MaaYuan)下载，需要科学上网，如果喜欢`MaaYuan`，请在项目右上角点亮`Star`支持。
 - 【最多选】网盘下载↓↓，AI抓取Github后网盘分流，更新不一定及时。
 
@@ -52,8 +52,8 @@
 | 若依赖库安装失败 | 下载**VCRedist**：点击 [**vc_redist.x64**](https://aka.ms/vs/17/release/vc_redist.x64.exe) 下载并安装完成；下载**NET10**：点击[**.NET 官方下载页面**](https://dotnet.microsoft.com/zh-cn/download/dotnet/10.0)选择 .NET **桌面运行时**-Windows **x64**进行下载并安装完成。 | 无需下载**VCRedist**；下载**NET10**：点击[**.NET 官方下载页面**](https://dotnet.microsoft.com/zh-cn/download/dotnet/10.0)选择 .NET**运行时**-macOS **Arm64**进行下载并安装完成。 |
 
 ::: details 版本变化提醒
-如需使用 `正式版V1.0.2 `（发布于2025年12月1日）及往期版本，请安装 `.NET 8 `版本运行库。
-如需使用 `公测版v2.0.0 `（发布于2026年1月1日）及之后版本，请安装 `.NET 10 `及以上版本运行库。
+如需使用 `正式版V1.0.2 `（发布于2025年12月1日）及之前的版本，请安装 `.NET 8 `版本运行库。
+如需使用 `公测版v2.0.0 `（发布于2026年1月1日）及最新的版本，请安装 `.NET 10 `及以上版本运行库。
 :::
 
 ## 下一步
