@@ -15,6 +15,8 @@ interface DownloadRecommendation {
   hint: string
   filename?: string
   tone: 'brand' | 'warning' | 'danger' | 'neutral'
+  versionNote?: string
+  docLink?: { label: string; url: string }
 }
 
 type MirrorChyanOs = 'windows' | 'macos' | 'linux'
@@ -39,7 +41,21 @@ const downloadChannels: DownloadChannel[] = [
     label: '百度网盘',
     href: 'https://pan.baidu.com/s/1iONHXFD3p-UkMTPMMvEPFQ?pwd=yuan',
   },
+  {
+    label: '夸克网盘',
+    href: 'https://pan.quark.cn/s/cb9de5c302e8',
+    note: '提取码：CtyT',
+  },
 ]
+
+const allDownloadChannels = computed<DownloadChannel[]>(() => [
+  ...downloadChannels,
+  {
+    label: 'Mirror酱 (高速)',
+    href: mirrorChyanUrl.value,
+    note: '已有 CDK？前往高速下载',
+  },
+])
 
 const rootRef = ref<HTMLElement | null>(null)
 const detailsRef = ref<HTMLDetailsElement | null>(null)
@@ -136,6 +152,8 @@ const recommendation = computed<DownloadRecommendation>(() => {
       hint: '进入任一网盘后，优先选择以下完整安装包：',
       filename: releaseFiles.windows.x64,
       tone: 'brand',
+      versionNote: '推荐下载公测版的最新发布包',
+      docLink: { label: '版本区别', url: '/Started/ConnectionAndUpdate#版本区别' },
     }
   }
 
@@ -170,6 +188,8 @@ const recommendation = computed<DownloadRecommendation>(() => {
       hint: '进入任一网盘后，优先选择以下完整安装包；若你的 Mac 是 Intel 处理器，则当前暂不支持。',
       filename: releaseFiles.macos.arm64,
       tone: 'brand',
+      versionNote: '推荐下载公测版的最新发布包',
+      docLink: { label: '版本区别', url: '/Started/ConnectionAndUpdate#版本区别' },
     }
   }
 
@@ -297,14 +317,12 @@ onMounted(() => {
       <p class="smart-download__hint">
         {{ recommendation.hint }}
       </p>
+      <p v-if="recommendation.versionNote" class="smart-download__version-note">
+        {{ recommendation.versionNote }}，查看
+        <a v-if="recommendation.docLink" :href="recommendation.docLink.url">{{ recommendation.docLink.label }}</a>
+      </p>
       <p v-if="recommendation.filename" class="smart-download__filename">
         <code>{{ recommendation.filename }}</code>
-      </p>
-      <p class="smart-download__mirror">
-        <span>已有 Mirror酱 CDK？</span>
-        <a :href="mirrorChyanUrl" target="_blank" rel="noopener noreferrer">
-          前往 Mirror酱 高速下载
-        </a>
       </p>
     </div>
 
@@ -315,7 +333,7 @@ onMounted(() => {
 
       <div id="download-channel-links" class="smart-download__grid">
         <a
-          v-for="channel in downloadChannels"
+          v-for="channel in allDownloadChannels"
           :key="channel.label"
           class="smart-download__link"
           :href="channel.href"
@@ -420,22 +438,25 @@ onMounted(() => {
   word-break: break-all;
 }
 
-.smart-download__mirror {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin: 2px 0 0;
-  color: var(--vp-c-text-2);
-  line-height: 1.6;
-}
-
-.smart-download__mirror a {
-  color: var(--vp-c-brand-1);
+.smart-download__version-note {
+  margin: 0;
+  padding-left: 12px;
+  border-left: 3px solid var(--vp-c-brand-1);
+  color: var(--vp-c-text-1);
+  font-size: 0.95rem;
   font-weight: 600;
-  text-decoration: none;
+  line-height: 1.7;
 }
 
-.smart-download__mirror a:hover {
+.smart-download__version-note a {
+  color: var(--vp-c-brand-1);
+  font-weight: 700;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.smart-download__version-note a:hover {
+  color: var(--vp-c-brand-2);
   text-decoration: underline;
 }
 
