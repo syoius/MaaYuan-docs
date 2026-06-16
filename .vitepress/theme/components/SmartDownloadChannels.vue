@@ -46,6 +46,15 @@ const downloadChannels: DownloadChannel[] = [
   },
 ]
 
+const allDownloadChannels = computed<DownloadChannel[]>(() => [
+  ...downloadChannels,
+  {
+    label: 'Mirror酱 (高速)',
+    href: mirrorChyanUrl.value,
+    note: '已有 CDK？前往高速下载',
+  },
+])
+
 const rootRef = ref<HTMLElement | null>(null)
 const detailsRef = ref<HTMLDetailsElement | null>(null)
 const summaryRef = ref<HTMLElement | null>(null)
@@ -305,12 +314,6 @@ onMounted(() => {
       <p v-if="recommendation.filename" class="smart-download__filename">
         <code>{{ recommendation.filename }}</code>
       </p>
-      <p class="smart-download__mirror">
-        <span>已有 Mirror酱 CDK？</span>
-        <a :href="mirrorChyanUrl" target="_blank" rel="noopener noreferrer">
-          前往 Mirror酱 高速下载
-        </a>
-      </p>
     </div>
 
     <details ref="detailsRef" class="smart-download__details" @toggle="syncExpandedState">
@@ -320,7 +323,7 @@ onMounted(() => {
 
       <div id="download-channel-links" class="smart-download__grid">
         <a
-          v-for="channel in downloadChannels"
+          v-for="channel in allDownloadChannels"
           :key="channel.label"
           class="smart-download__link"
           :href="channel.href"
@@ -423,25 +426,6 @@ onMounted(() => {
   line-height: 1.5;
   white-space: normal;
   word-break: break-all;
-}
-
-.smart-download__mirror {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin: 2px 0 0;
-  color: var(--vp-c-text-2);
-  line-height: 1.6;
-}
-
-.smart-download__mirror a {
-  color: var(--vp-c-brand-1);
-  font-weight: 600;
-  text-decoration: none;
-}
-
-.smart-download__mirror a:hover {
-  text-decoration: underline;
 }
 
 .smart-download__details {
