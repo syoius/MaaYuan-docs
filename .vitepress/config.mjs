@@ -173,6 +173,7 @@ export default defineConfig({
           pattern: "https://github.com/MrSnake0208/MaaYuan-docs/edit/main/:path",
           text: "在 GitHub 上编辑此页",
         },
+        siteTitle: "MaaYuan",
         logo: "/icon.png",
         socialLinks: [{ icon: "github", link: "https://github.com/MrSnake0208/MaaYuan-docs" }],
         footer: {
