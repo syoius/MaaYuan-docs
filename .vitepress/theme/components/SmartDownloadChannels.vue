@@ -15,6 +15,8 @@ interface DownloadRecommendation {
   hint: string
   filename?: string
   tone: 'brand' | 'warning' | 'danger' | 'neutral'
+  versionNote?: string
+  docLink?: { label: string; url: string }
 }
 
 type MirrorChyanOs = 'windows' | 'macos' | 'linux'
@@ -150,6 +152,8 @@ const recommendation = computed<DownloadRecommendation>(() => {
       hint: '进入任一网盘后，优先选择以下完整安装包：',
       filename: releaseFiles.windows.x64,
       tone: 'brand',
+      versionNote: '推荐下载公测版的最新发布包',
+      docLink: { label: '版本区别', url: '/Started/ConnectionAndUpdate#版本区别' },
     }
   }
 
@@ -184,6 +188,8 @@ const recommendation = computed<DownloadRecommendation>(() => {
       hint: '进入任一网盘后，优先选择以下完整安装包；若你的 Mac 是 Intel 处理器，则当前暂不支持。',
       filename: releaseFiles.macos.arm64,
       tone: 'brand',
+      versionNote: '推荐下载公测版的最新发布包',
+      docLink: { label: '版本区别', url: '/Started/ConnectionAndUpdate#版本区别' },
     }
   }
 
@@ -311,6 +317,10 @@ onMounted(() => {
       <p class="smart-download__hint">
         {{ recommendation.hint }}
       </p>
+      <p v-if="recommendation.versionNote" class="smart-download__version-note">
+        {{ recommendation.versionNote }}，查看
+        <a v-if="recommendation.docLink" :href="recommendation.docLink.url">{{ recommendation.docLink.label }}</a>
+      </p>
       <p v-if="recommendation.filename" class="smart-download__filename">
         <code>{{ recommendation.filename }}</code>
       </p>
@@ -426,6 +436,28 @@ onMounted(() => {
   line-height: 1.5;
   white-space: normal;
   word-break: break-all;
+}
+
+.smart-download__version-note {
+  margin: 0;
+  padding-left: 12px;
+  border-left: 3px solid var(--vp-c-brand-1);
+  color: var(--vp-c-text-1);
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.7;
+}
+
+.smart-download__version-note a {
+  color: var(--vp-c-brand-1);
+  font-weight: 700;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.smart-download__version-note a:hover {
+  color: var(--vp-c-brand-2);
+  text-decoration: underline;
 }
 
 .smart-download__details {
