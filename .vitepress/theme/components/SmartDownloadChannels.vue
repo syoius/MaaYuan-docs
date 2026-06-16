@@ -39,6 +39,11 @@ const downloadChannels: DownloadChannel[] = [
     label: '百度网盘',
     href: 'https://pan.baidu.com/s/1iONHXFD3p-UkMTPMMvEPFQ?pwd=yuan',
   },
+  {
+    label: '夸克网盘',
+    href: 'https://pan.quark.cn/s/cb9de5c302e8',
+    note: '提取码：CtyT',
+  },
 ]
 
 const rootRef = ref<HTMLElement | null>(null)

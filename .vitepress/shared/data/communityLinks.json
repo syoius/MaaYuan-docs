@@ -112,6 +112,17 @@
         "color": "#FFD700"
       },
       "more": true
+    },
+    {
+      "icon": "📖",
+      "text": "代号鸢攻略网站",
+      "href": "https://yuanguider.com/",
+      "external": false,
+      "author": {
+        "name": "YuanGuider",
+        "color": "#8B5CF6"
+      },
+      "more": false
     }
   ]
 }
