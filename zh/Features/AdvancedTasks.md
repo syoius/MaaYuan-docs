@@ -88,4 +88,4 @@ adb devices
 
 - 要长时间挂日常：优先循环任务
 - 要刷洞窟或打活动：先看 [当前活动](../Activity/Current)
-- 要复现问题：优先保留日志并查看 [FAQ](../FAQ/)
+- 要复现问题：优先保留日志并查看 [FAQ](../FAQ/01-general-issues)

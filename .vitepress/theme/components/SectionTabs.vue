@@ -8,9 +8,9 @@ const { frontmatter } = useData()
 const tabs = [
   { text: '快速开始', link: '/Started/Install', matchers: ['/Started/'] },
   { text: '关于MaaYuan', link: '/Manual/Overview', matchers: ['/Manual/'] },
-  { text: '功能介绍', link: '/Features/InstancesAndTaskList', matchers: ['/Features/'] },
+  { text: '功能介绍', link: '/Features/HomeInterface', matchers: ['/Features/'] },
   { text: '任务介绍', link: '/Activity/Current', matchers: ['/Activity/'] },
-  { text: '常见问题', link: '/FAQ/', matchers: ['/FAQ', '/FAQ/'] },
+  { text: '常见问题', link: '/FAQ/01-general-issues', matchers: ['/FAQ', '/FAQ/'] },
   { text: '开发手册', link: '/Developer/0.0-MaaYuan零基础开发指南', matchers: ['/Developer'] }
 ]
 
