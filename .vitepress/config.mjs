@@ -47,7 +47,7 @@ export default defineConfig({
               { text: '关于MaaYuan', link: '/Manual/Overview' },
               { text: '功能介绍', link: '/Features/HomeInterface' },
               { text: '任务介绍', link: '/Activity/Current' },
-              { text: '常见问题', link: '/FAQ/' },
+              { text: '常见问题', link: '/FAQ/01-general-issues' },
             ],
           },
           { 
@@ -124,7 +124,6 @@ export default defineConfig({
               text: "⚙️ 功能介绍",
               items: [
                 { text: "主页界面", link: "/Features/HomeInterface" },
-                // { text: "实例与任务列表", link: "/Features/InstancesAndTaskList" },
                 // { text: "日常任务说明", link: "/Features/DailyTasks" },
                 // { text: "进阶功能说明", link: "/Features/AdvancedTasks" },
                 { text: "自动战斗", link: "/Features/AutoBattle" },
@@ -141,18 +140,6 @@ export default defineConfig({
                 { text: "当前活动", link: "/Activity/Current" },
                 { text: "常驻任务", link: "/Activity/Permanent" },
                 { text: "往期任务", link: "/Activity/EventArchive"},
-              ],
-            },
-            {
-              text: "💫 常见问题",
-              items: [
-                // { text: "FAQ 总览", link: "/FAQ/" },
-                { text: "问题排查", link: "/FAQ/01-general-issues" },
-                { text: "下载安装", link: "/FAQ/02-installation-issues" },
-                // { text: "启动问题", link: "/FAQ/03-startup-issues" },
-                { text: "连接错误", link: "/FAQ/04-connection-issues" },
-                { text: "任务运行", link: "/FAQ/05-runtime-issues" },
-                // { text: "作业问题", link: "/FAQ/06-homework-issues" },
               ],
             },
           ],
