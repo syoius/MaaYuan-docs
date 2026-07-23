@@ -20,7 +20,7 @@
 ## 反馈至
 
 ### 反馈至`收集表格`
-  1. 点开[此问卷连接](https://td3nqr3477.feishu.cn/share/base/form/shrcn1zPtP9CZZT35erTCarjEOg)，按照表格内容填写即可；
+  1. 点开[此问卷连接](https://my.feishu.cn/share/base/form/shrcn0WVk6snsY0GJ5CbOxKE0oe)，按照表格内容填写即可；
   2. 记得留下你的ID，我们解决完成会在频道/QQ群艾特你哦，或者问题需要跟进也要联系上你。
 
 ### 反馈至`频道-发帖区`
