@@ -52,7 +52,32 @@ export default defineConfig({
     themeEnhance: {
       enabled: true,
       layoutSwitch: { defaultMode: "original" },
-      themeColor: { defaultColorName: "vp-primary", defaultSpread: false },
+      themeColor: {
+        defaultColorName: "vp-primary",
+        defaultSpread: false,
+        append: [
+          {
+            label: "扩展主题色板",
+            tip: "MaaYuan 扩展主题色板",
+            options: [
+              { label: "紫色", value: "maayuan-purple", color: "#8b5cf6" },
+              { label: "紫罗兰", value: "maayuan-violet", color: "#7166f0" },
+              { label: "粉红", value: "maayuan-pink", color: "#f15bb5" },
+              { label: "黄绿", value: "maayuan-yellow-green", color: "#8ac926" },
+              { label: "薰衣草", value: "maayuan-lavender", color: "#967bb6" },
+              { label: "橙红", value: "maayuan-orange-red", color: "#ff9e6b" },
+              { label: "石板灰", value: "maayuan-slate-gray", color: "#708090" },
+              { label: "深海蓝", value: "maayuan-ocean-blue", color: "#0077be" },
+              { label: "橄榄绿", value: "maayuan-olive-green", color: "#808000" },
+              { label: "琥珀色", value: "maayuan-amber", color: "#ffbf00" },
+              { label: "日落橙", value: "maayuan-sunset-orange", color: "#ff7f50" },
+              { label: "雾霾蓝", value: "maayuan-haze-blue", color: "#6699cc" },
+              { label: "豆沙红", value: "maayuan-bean-paste-red", color: "#d27d7d" },
+              { label: "玫瑰金", value: "maayuan-rose-gold", color: "#b76e79" },
+            ],
+          },
+        ],
+      },
       spotlight: { defaultValue: false, defaultStyle: "aside" },
     },
   }),
@@ -89,7 +114,7 @@ export default defineConfig({
           {
             text: '📖 使用手册',
             items: [
-              { text: '快速开始', link: '/Started/Install' },
+              { text: '快速开始', link: '/Started/BeforeStart' },
               { text: '关于MaaYuan', link: '/Manual/Overview' },
               { text: '功能介绍', link: '/Features/HomeInterface' },
               { text: '任务介绍', link: '/Activity/Current' },
@@ -136,31 +161,18 @@ export default defineConfig({
               ],
             },
           ],
-          "/FAQ/": [
-            {
-              text: "💫 常见问题",
-              items: [
-                // { text: "FAQ 总览", link: "/FAQ/" },
-                { text: "问题排查", link: "/FAQ/01-general-issues" },
-                { text: "下载安装", link: "/FAQ/02-installation-issues" },
-                // { text: "启动问题", link: "/FAQ/03-startup-issues" },
-                { text: "连接错误", link: "/FAQ/04-connection-issues" },
-                { text: "任务运行", link: "/FAQ/05-runtime-issues" },
-                // { text: "作业问题", link: "/FAQ/06-homework-issues" },
-              ],
-            },
-          ],
           "/": [
             {
-              text: "🚀 快速开始",
+              text: "快速开始",
               items: [
+                { text: "写在前面", link: "/Started/BeforeStart" },
                 { text: "下载与安装", link: "/Started/Install" },
                 { text: "首次启动", link: "/Started/FirstLaunch" },
                 { text: "连接与更新", link: "/Started/ConnectionAndUpdate" },
               ],
             },
             {
-              text: "📘 关于MaaYuan",
+              text: "关于MaaYuan",
               items: [
                 { text: "项目概览", link: "/Manual/Overview" },
                 { text: "反馈方式", link: "/Manual/Feedback" },
@@ -169,7 +181,7 @@ export default defineConfig({
               ],
             },
             {
-              text: "⚙️ 功能介绍",
+              text: "功能介绍",
               items: [
                 { text: "主页界面", link: "/Features/HomeInterface" },
                 // { text: "日常任务说明", link: "/Features/DailyTasks" },
@@ -183,11 +195,20 @@ export default defineConfig({
               ],
             },
             {
-              text: "🎉 活动指南",
+              text: "任务介绍",
               items: [
                 { text: "当前活动", link: "/Activity/Current" },
                 { text: "常驻任务", link: "/Activity/Permanent" },
                 { text: "往期任务", link: "/Activity/EventArchive"},
+              ],
+            },
+            {
+              text: "常见问题",
+              items: [
+                { text: "问题排查", link: "/FAQ/01-general-issues" },
+                { text: "下载安装", link: "/FAQ/02-installation-issues" },
+                { text: "连接错误", link: "/FAQ/04-connection-issues" },
+                { text: "任务运行", link: "/FAQ/05-runtime-issues" },
               ],
             },
           ],
@@ -205,12 +226,12 @@ export default defineConfig({
           next: "下一篇",
         },
         editLink: {
-          pattern: "https://github.com/MrSnake0208/MaaYuan-docs/edit/main/:path",
+          pattern: "https://github.com/Syoius/MaaYuan-docs/edit/main/:path",
           text: "在 GitHub 上编辑此页",
         },
         siteTitle: "MaaYuan",
         logo: "/icon.png",
-        socialLinks: [{ icon: "github", link: "https://github.com/MrSnake0208/MaaYuan-docs" }],
+        socialLinks: [{ icon: "github", link: "https://github.com/Syoius/MaaYuan-docs" }],
         footer: {
           message: footerMessage,
           copyright: footerCopyright,

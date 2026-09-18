@@ -4,6 +4,7 @@ venv/
 node_modules/
 .vitepress/cache
 .vitepress/.temp/
+.vitepress/temp/
 *dist
 .ace-tool/
 operations-log.md

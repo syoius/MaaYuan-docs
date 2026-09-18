@@ -15,6 +15,7 @@
 | 安装包名 | `MaaYuan-win-x86_64-vXXX.zip` | `MaaYuan-macos-aarch64-vXXX.tar.gz` |
 
 ::: warning
+
 - `MaaYuan`当前仅支持 `Windows x64` 与 `macOS Apple Silicon（aarch64）`。
 - Windows 端只提供 `x86_64` 安装包，不支持 Windows ARM。
 - macOS 目前仅支持 Apple Silicon（`aarch64`）安装包；Intel Mac 暂不支持。
@@ -29,6 +30,10 @@
 - 【最多选】网盘下载↓↓，AI抓取Github后网盘分流，更新不一定及时。
 
 <SmartDownloadChannels />
+
+::: caution
+注意下载的是**压缩包**，Github别下成代码、网盘别下成整个文件夹（点到最后一级目录）！
+:::
 
 ## 解压安装
 
@@ -46,14 +51,24 @@
 
 ## 安装运行环境（依赖库）
 
+如果想使用MaaYuan，必须安装 .NET 桌面环境和MaaLYSK代码的语言环境。
+
+根据下方表格，按步骤进行安装。
+
 | **系统** | **Windows** | **macOS** |
 | --------------------- | -------------------- | -------------------- |
 | 依赖库主要安装步骤 | 打开`MaaYuan`文件夹右键点击`DependencySetup_依赖库安装_win.bat`选择“以管理员身份运行” | 打开`MaaYuan`文件夹点击“新建位于文件夹位置的终端窗口”或点击`启动台-其他-终端`输入指令 `sh DependencySetup_依赖库安装_mac.sh` |
 | 若依赖库安装失败 | 下载**VCRedist**：点击 [**vc_redist.x64**](https://aka.ms/vs/17/release/vc_redist.x64.exe) 下载并安装完成；下载**NET10**：点击[**.NET 官方下载页面**](https://dotnet.microsoft.com/zh-cn/download/dotnet/10.0)选择 .NET **桌面运行时**-Windows **x64**进行下载并安装完成。 | 无需下载**VCRedist**；下载**NET10**：点击[**.NET 官方下载页面**](https://dotnet.microsoft.com/zh-cn/download/dotnet/10.0)选择 .NET**运行时**-macOS **Arm64**进行下载并安装完成。 |
 
+::: tip
+如果不能右键`DependencySetup_ 依赖库安装_win.bat`文件安装的话，其它方式点击下载后，只是下好了运行库的**安装包**，而非**完成**了运行库的安装。
+
+需要右键-**以管理员身份运行**两个文件完成安装！
+:::
+
 ::: details 版本变化提醒
-如需使用 `正式版V1.0.2 `（发布于2025年12月1日）及之前的版本，请安装 `.NET 8 `版本运行库。
-如需使用 `公测版v2.0.0 `（发布于2026年1月1日）及最新的版本，请安装 `.NET 10 `及以上版本运行库。
+如需使用 `正式版V1.0.2`（发布于2025年12月1日）及之前的版本，请安装 `.NET 8`版本运行库。
+如需使用 `公测版v2.0.0`（发布于2026年1月1日）及最新的版本，请安装 `.NET 10`及以上版本运行库。
 :::
 
 ## 下一步

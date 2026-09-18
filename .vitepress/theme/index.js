@@ -12,6 +12,7 @@ import './styles/custom-block.css'
 import './styles/font.css'
 import AnnouncementNavAction from './components/AnnouncementNavAction.vue'
 import AnnouncementNavModal from './components/AnnouncementNavModal.vue'
+import BeforeStartGuide from './components/BeforeStartGuide.vue'
 import QuickStartModal from './components/QuickStartModal.vue'
 import Layout from './components/Layout.vue'
 import ArticleShare from './components/ArticleShare.vue'
@@ -27,6 +28,7 @@ export default {
   extends: Teek,
   enhanceApp(ctx) {
     ctx.app.component('AnnouncementNavAction', AnnouncementNavAction)
+    ctx.app.component('BeforeStartGuide', BeforeStartGuide)
     ctx.app.component('HomeCommunityLinks', HomeCommunityLinks)
     ctx.app.component('HomeContributors', HomeContributors)
     ctx.app.component('NavPopoverBadge', NavPopoverBadge)
