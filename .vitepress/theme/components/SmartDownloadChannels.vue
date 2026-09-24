@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, nextTick, onMounted, ref } from 'vue'
+import { navPopoverData } from '../../shared/navPopover.mjs'
 
 type Platform = 'windows' | 'macos' | 'linux' | 'android' | 'ios' | 'unknown'
 type Arch = 'x64' | 'arm64' | 'arm' | 'unknown'
@@ -23,14 +24,29 @@ type MirrorChyanOs = 'windows' | 'macos' | 'linux'
 type MirrorChyanArch = 'x64' | 'arm64'
 type UserAgentHighEntropyHint = 'architecture'
 
-const releaseFiles = {
-  windows: {
-    x64: 'MaaYuan-win-x86_64-vx.x.x-xxxx.zip',
-  },
-  macos: {
-    arm64: 'MaaYuan-macos-aarch64-vx.x.x-xxxx.tar.gz',
-  },
-} as const
+const archivePlatformTags: Partial<Record<Platform, string>> = {
+  windows: 'win',
+  macos: 'macos',
+  linux: 'linux',
+}
+
+const archiveArchTags: Partial<Record<Arch, string>> = {
+  x64: 'x86_64',
+  arm64: 'aarch64',
+}
+
+const currentVersion = navPopoverData.badgeText.trim().replace(/^[^\w]+/, '')
+
+function buildArtifactFilename(platform: Platform, arch: Arch): string | undefined {
+  const platformTag = archivePlatformTags[platform]
+  const archTag = archiveArchTags[arch]
+
+  if (!platformTag || !archTag)
+    return undefined
+
+  const extension = platform === 'windows' ? 'zip' : 'tar.gz'
+  return `MaaYuan-${platformTag}-${archTag}-${currentVersion}.${extension}`
+}
 
 const downloadChannels: DownloadChannel[] = [
   {
@@ -150,7 +166,7 @@ const recommendation = computed<DownloadRecommendation>(() => {
     return {
       button: '推荐下载 Windows x64 版',
       hint: '进入任一网盘后，优先选择以下完整安装包：',
-      filename: releaseFiles.windows.x64,
+      filename: buildArtifactFilename(detectedPlatform.value, detectedArch.value),
       tone: 'brand',
       versionNote: '推荐下载公测版的最新发布包',
       docLink: { label: '版本区别', url: '/Started/ConnectionAndUpdate#版本区别' },
@@ -169,7 +185,7 @@ const recommendation = computed<DownloadRecommendation>(() => {
     return {
       button: '推荐下载 Windows x64 版',
       hint: 'MaaYuan 当前仅支持 Windows x64；若未识别出架构，请优先下载 x86_64 完整包。',
-      filename: releaseFiles.windows.x64,
+      filename: buildArtifactFilename('windows', 'x64'),
       tone: 'warning',
     }
   }
@@ -186,7 +202,7 @@ const recommendation = computed<DownloadRecommendation>(() => {
     return {
       button: '推荐下载 macOS Apple Silicon 版',
       hint: '进入任一网盘后，优先选择以下完整安装包；若你的 Mac 是 Intel 处理器，则当前暂不支持。',
-      filename: releaseFiles.macos.arm64,
+      filename: buildArtifactFilename('macos', 'arm64'),
       tone: 'brand',
       versionNote: '推荐下载公测版的最新发布包',
       docLink: { label: '版本区别', url: '/Started/ConnectionAndUpdate#版本区别' },
@@ -221,6 +237,22 @@ const recommendation = computed<DownloadRecommendation>(() => {
     button: '当前系统暂不支持',
     hint: 'MaaYuan 当前仅支持 Windows x64 与 macOS Apple Silicon（aarch64）。',
     tone: 'danger',
+  }
+})
+
+const artifactFilenameParts = computed(() => {
+  const filename = recommendation.value.filename
+  if (!filename)
+    return { before: '', version: '', after: '' }
+
+  const versionIndex = filename.indexOf(currentVersion)
+  if (versionIndex === -1)
+    return { before: filename, version: '', after: '' }
+
+  return {
+    before: filename.slice(0, versionIndex),
+    version: currentVersion,
+    after: filename.slice(versionIndex + currentVersion.length),
   }
 })
 
@@ -317,12 +349,12 @@ onMounted(() => {
       <p class="smart-download__hint">
         {{ recommendation.hint }}
       </p>
+      <p v-if="recommendation.filename" class="smart-download__filename">
+        <code>{{ artifactFilenameParts.before }}<strong>{{ artifactFilenameParts.version }}</strong>{{ artifactFilenameParts.after }}</code>
+      </p>
       <p v-if="recommendation.versionNote" class="smart-download__version-note">
         {{ recommendation.versionNote }}，查看
         <a v-if="recommendation.docLink" :href="recommendation.docLink.url">{{ recommendation.docLink.label }}</a>
-      </p>
-      <p v-if="recommendation.filename" class="smart-download__filename">
-        <code>{{ recommendation.filename }}</code>
       </p>
     </div>
 
@@ -436,6 +468,10 @@ onMounted(() => {
   line-height: 1.5;
   white-space: normal;
   word-break: break-all;
+}
+
+.smart-download__filename strong {
+  font-weight: 700;
 }
 
 .smart-download__version-note {

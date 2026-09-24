@@ -18,21 +18,19 @@
 - 作业站前端
 - ⚔️[司命-Maa鸢的作业生成器](https://github.com/syoius/MaaYuan-SiMing)
 - [原导航站](https://github.com/syoius/MaaYuan)
-- 🆕[导航站前端](https://github.com/MrSnake0208/MaaYuan-docs)
+- 🆕[文档站前端](https://github.com/syoius/MaaYuan-docs)
 - 🤖Maa鸢助理
-
 
 ## 参与开发
 
 详细请查阅[【开发手册】](../Developer/0.0-MaaYuan%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97.html)
-
-
 
 ## 一键加入
 
 - [QQ频道](https://pd.qq.com/s/4e4angw4z3)
 - [QQ交流群](https://qm.qq.com/q/ORc2ANqg24)
 - [QQ内测群](https://qm.qq.com/q/nTuF2UJ3EI)
+
 <details>
     <summary> Maa鸢内测群进群须知</summary>
     请查看置顶内测招募公告

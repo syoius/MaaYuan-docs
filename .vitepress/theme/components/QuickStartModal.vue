@@ -15,9 +15,9 @@ function dismiss() {
   isVisible.value = false
 }
 
-function goInstall() {
+function goBeforeStart() {
   dismiss()
-  router.go('/Started/Install')
+  router.go('/Started/BeforeStart')
 }
 
 function goInstallDirect() {
@@ -57,7 +57,7 @@ onMounted(() => {
               <span class="qs-btn-desc">跳转下载渠道</span>
             </span>
           </button>
-          <button class="qs-btn qs-btn-outline" @click="dismiss(); goInstall()">
+          <button class="qs-btn qs-btn-outline" @click="dismiss(); goBeforeStart()">
             <img class="qs-btn-emoji" src="https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f195.svg" alt="新">
             <span class="qs-btn-text">
               <span class="qs-btn-title">我是新用户</span>

@@ -4,7 +4,7 @@
 MaaYuan 中文文档站，使用 VitePress 2.0.0-alpha.20、Vue 和 Teek 1.6.2 文档主题。
 
 - 当前站点结构：VitePress 单中文入口（通过 `zh/` 重写到根路径）
-- GitHub 仓库：<https://github.com/MrSnake0208/MaaYuan-docs>
+- GitHub 仓库：<https://github.com/syoius/MaaYuan-docs>
 
 ## 本地开发
 
