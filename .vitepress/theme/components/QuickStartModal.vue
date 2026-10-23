@@ -1,14 +1,25 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
-import { useRouter } from 'vitepress'
+import { ref, onMounted, nextTick } from 'vue'
+import { useRouter, withBase } from 'vitepress'
 import BaseModal from './BaseModal.vue'
 
 const router = useRouter()
 
 const isVisible = ref(false)
+const showQuickStart = ref(false)
+const dialogTitle = ref<HTMLElement | null>(null)
 
-function show() {
+async function show() {
+  showQuickStart.value = false
   isVisible.value = true
+  await nextTick()
+  dialogTitle.value?.focus()
+}
+
+async function continueQuickStart() {
+  showQuickStart.value = true
+  await nextTick()
+  dialogTitle.value?.focus()
 }
 
 function dismiss() {
@@ -45,25 +56,55 @@ onMounted(() => {
     content-class="quick-start-modal"
     @close="dismiss"
   >
-    <section class="quick-start-modal__container">
+    <section
+      class="quick-start-modal__container"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="quick-start-title"
+    >
       <div class="qs-body">
-        <div class="qs-tag">快速开始</div>
-        <p class="qs-subtitle">欢迎使用MaaYuan，请选择您的需求</p>
+        <h2
+          id="quick-start-title"
+          ref="dialogTitle"
+          :class="showQuickStart ? 'qs-tag' : 'qs-title'"
+          tabindex="-1"
+        >
+          {{ showQuickStart ? '快速开始' : '邺城之战 V3' }}
+        </h2>
+        <p class="qs-subtitle">
+          {{ showQuickStart ? '欢迎使用MaaYuan，请选择您的需求' : '这次是来使用邺城之战 V3 吗？' }}
+        </p>
         <div class="qs-actions">
-          <button class="qs-btn qs-btn-primary" @click="dismiss(); goInstallDirect()">
-            <img class="qs-btn-emoji" src="https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f5a5.svg" alt="电脑">
-            <span class="qs-btn-text">
-              <span class="qs-btn-title">我不是新用户</span>
-              <span class="qs-btn-desc">跳转下载渠道</span>
-            </span>
-          </button>
-          <button class="qs-btn qs-btn-outline" @click="dismiss(); goBeforeStart()">
-            <img class="qs-btn-emoji" src="https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f195.svg" alt="新">
-            <span class="qs-btn-text">
-              <span class="qs-btn-title">我是新用户</span>
-              <span class="qs-btn-desc">跳转新手教程</span>
-            </span>
-          </button>
+          <template v-if="!showQuickStart">
+            <a
+              class="qs-btn qs-btn-primary"
+              :href="withBase('/Activity/YechengzhizhanV3')"
+              @click="dismiss"
+            >
+              <span class="qs-btn-title">是，查看 V3</span>
+              <span class="qs-btn-desc">多开与常见问题</span>
+            </a>
+            <button class="qs-btn qs-btn-outline" @click="continueQuickStart">
+              <span class="qs-btn-title">不是，继续</span>
+              <span class="qs-btn-desc">下载与新手教程</span>
+            </button>
+          </template>
+          <template v-else>
+            <button class="qs-btn qs-btn-primary" @click="dismiss(); goInstallDirect()">
+              <img class="qs-btn-emoji" src="https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f5a5.svg" alt="电脑">
+              <span class="qs-btn-text">
+                <span class="qs-btn-title">我不是新用户</span>
+                <span class="qs-btn-desc">跳转下载渠道</span>
+              </span>
+            </button>
+            <button class="qs-btn qs-btn-outline" @click="dismiss(); goBeforeStart()">
+              <img class="qs-btn-emoji" src="https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f195.svg" alt="新">
+              <span class="qs-btn-text">
+                <span class="qs-btn-title">我是新用户</span>
+                <span class="qs-btn-desc">跳转新手教程</span>
+              </span>
+            </button>
+          </template>
         </div>
       </div>
     </section>
@@ -74,7 +115,7 @@ onMounted(() => {
 .quick-start-modal {
   width: min(92vw, 480px);
   padding: 0;
-  overflow: hidden;
+  overflow: auto;
 }
 
 .quick-start-modal__container {
@@ -88,10 +129,22 @@ onMounted(() => {
   text-align: center;
 }
 
+#quick-start-title {
+  outline: none;
+}
+
+.qs-title {
+  margin: 0 0 12px;
+  color: var(--vp-c-brand-1);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
 .qs-tag {
   display: inline-block;
   padding: 4px 16px;
-  margin-bottom: 12px;
+  margin: 0 0 12px;
   border-radius: 999px;
   font-size: 14px;
   font-weight: 700;
@@ -123,6 +176,7 @@ onMounted(() => {
   cursor: pointer;
   transition: all 0.2s;
   text-align: center;
+  text-decoration: none;
 }
 
 .qs-btn-primary {

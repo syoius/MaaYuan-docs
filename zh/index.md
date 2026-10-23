@@ -11,6 +11,9 @@ hero:
   tagline: 零编码基础 · 强大识别 · 灵活扩展<br>日常、活动、高难关卡从此拿捏，畅玩无忧 🐾
   actions:
     - theme: brand
+      text: 邺城之战
+      link: /Activity/YechengzhizhanV3
+    - theme: brand
       text: 开始使用
       link: '#quick-start-popup'
     - theme: alt

@@ -39,6 +39,26 @@ body {
   height: 40px;
 }
 
+.VPSidebar .nav .item a[href*="/Activity/YechengzhizhanV3"] {
+  padding: 16px 12px;
+  border-radius: 10px;
+  background: var(--vp-button-brand-bg);
+  text-align: center;
+}
+
+.VPSidebar .nav .item a[href*="/Activity/YechengzhizhanV3"]:hover {
+  background: var(--vp-button-brand-hover-bg);
+}
+
+.VPSidebar .nav .VPSidebarItem .item a.VPLink.link[href*="/Activity/YechengzhizhanV3"] .text {
+  padding: 0;
+  color: var(--vp-button-brand-text);
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 1.4;
+  transform: none;
+}
+
 .VPFooter .footer-beian-links {
   display: inline-flex;
   align-items: center;

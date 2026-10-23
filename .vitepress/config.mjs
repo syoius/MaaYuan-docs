@@ -103,6 +103,7 @@ export default defineConfig({
       lang: "zh-CN",
       themeConfig: {
         nav: [
+          { text: '邺城之战', link: '/Activity/YechengzhizhanV3' },
           {
             component: "NavPopoverBadge",
             props: { ...navPopoverData, link: "/Started/ConnectionAndUpdate#更新设置" },
@@ -162,6 +163,7 @@ export default defineConfig({
             },
           ],
           "/": [
+            { text: "邺城之战 V3", link: "/Activity/YechengzhizhanV3" },
             {
               text: "快速开始",
               items: [
