@@ -1,7 +1,7 @@
 # 下载安装<Badge type="danger" text="问题" />
 
 ::: tip 阅读提示
-第一次使用 MaaYuan 时，建议先浏览 [下载与安装](https://maayuan.top/Started/Install.html) 与 [首次启动](https://maayuan.top/Started/FirstLaunch.html)。如果还是有问题，再来查阅本页面。
+第一次使用 MaaYuan 时，建议先浏览 [下载与安装](/Started/Install.html) 与 [首次启动](/Started/FirstLaunch.html)。如果还是有问题，再来查阅本页面。
 ::: 
 
 ## 下载相关
@@ -9,7 +9,7 @@
 ### 下载哪个安装包
 
 - 完整版命名规则：`MaaYuan-版本-平台-架构.zip`（如 `MaaYuan-*-win-x64.zip`），其他为零部件。
-- 具体下载详细操作请参阅考[新手教学](https://maayuan.top/Started/Install.html#download-channels)。
+- 具体下载详细操作请参阅考[新手教学](/Started/Install.html#download-channels)。
 
 ### **文件下载速度慢**
 
@@ -19,7 +19,7 @@
 
 ### **运行库问题**
 
-请确认是否已安装正确的运行库，详细操作请参阅[新手教学](https://maayuan.top/Started/Install.html#%E5%AE%89%E8%A3%85%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83-%E4%BE%9D%E8%B5%96%E5%BA%93)。
+请确认是否已安装正确的运行库，详细操作请参阅[新手教学](/Started/Install.html#%E5%AE%89%E8%A3%85%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83-%E4%BE%9D%E8%B5%96%E5%BA%93)。
 
 ### **系统问题**
 
@@ -52,18 +52,14 @@
 
 ### 大版本更新方式
 
-更新方式有两种，内置资源自动更新和外部下载手动更新，详细操作请参阅[新手教学](https://maayuan.top/Started/ConnectionAndUpdate.html#%E6%9B%B4%E6%96%B0%E8%AE%BE%E7%BD%AE)。
+更新方式有两种，内置资源自动更新和外部下载手动更新，详细操作请参阅[新手教学](/Started/ConnectionAndUpdate.html#%E6%9B%B4%E6%96%B0%E8%AE%BE%E7%BD%AE)。
 
 ## 启动报错
-
-### 报错信息：MFA遇到了问题...
-
-请看[常见问题](https://docs.qq.com/aio/DS1BMQmpiQkdOb1RT?p=lhxkpB2LdGdOmS3gQyArmB#rhyUl9GUKymFPSB4b6128k)。
 
 ### 报错信息：无法加载DLL
 
 - 确保在解压后的原文件夹内运行`MaaYuan.exe`（非快捷方式，勿拖至桌面）；
-- 请看[常见问题](https://docs.qq.com/aio/DS1BMQmpiQkdOb1RT?p=lhxkpB2LdGdOmS3gQyArmB#rhyUl9GUKymFPSB4b6128k)。
+- 确认不为上述问题，尝试重装MaaYuan解决。
 
 ### 报错信息：此应用无法在你的电脑上运行
 
