@@ -55,7 +55,7 @@ const downloadChannels: DownloadChannel[] = [
   },
   {
     label: '百度网盘',
-    href: 'https://pan.baidu.com/s/1iONHXFD3p-UkMTPMMvEPFQ?pwd=yuan',
+    href: 'https://pan.baidu.com/s/5MOOVhucKUQAOuIrZzhpT4w?',
   },
   {
     label: '夸克网盘',
