@@ -82,3 +82,9 @@
 - 长时间卡在依赖安装：请查阅[【常见问题】](../FAQ/01-general-issues)。
 - 双击无反应：检查运行库是否安装及系统权限。
 - 模拟器未适配：优先确认分辨率、ADB 连接与后台保活设置。
+
+## 通用解决方案
+
+- MaaYuan启动/打开/连接问题通用解决方法：下载[DeepSeek Harness](https://www.deepseek.com/harness/)后微信扫码登录。在对话框中：
+1. 添加工作区，选择MaaYuan所在文件夹；
+2. 选择全部权限后描述自己的问题。例如：“MaaYuan无法adb连接mumu”“MaaYuan启动Agent失败”。
